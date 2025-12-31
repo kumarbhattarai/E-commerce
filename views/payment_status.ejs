@@ -1,0 +1,26 @@
+<%- include('./includes/header') %>
+<%- include('./includes/nav', {isAuthenticated: true}) %>
+
+<main class="container mt-5 text-center">
+    <% if (status === 'success') { %>
+        <div class="card border-success mb-3" style="max-width: 50rem; margin: 0 auto;">
+            <div class="card-header bg-success text-white">Payment Successful</div>
+            <div class="card-body text-success">
+                <h5 class="card-title">Thank you for your purchase!</h5>
+                <p class="card-text">Your payment has been verified successfully.</p>
+                <a href="/orders" class="btn btn-success">View My Orders</a>
+            </div>
+        </div>
+    <% } else { %>
+        <div class="card border-danger mb-3" style="max-width: 50rem; margin: 0 auto;">
+            <div class="card-header bg-danger text-white">Payment Failed</div>
+            <div class="card-body text-danger">
+                <h5 class="card-title">Something went wrong.</h5>
+                <p class="card-text">We could not verify your payment. Please try again or contact support.</p>
+                <a href="/cart" class="btn btn-danger">Return to Cart</a>
+            </div>
+        </div>
+    <% } %>
+</main>
+
+

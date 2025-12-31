@@ -1,0 +1,130 @@
+/* Global Styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Navbar Customization */
+.navbar {
+    background: rgba(15, 23, 42, 0.95); /* Deep sleek dark blue */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.8rem 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.8rem;
+    letter-spacing: -0.5px;
+    background: linear-gradient(to right, #6dd5ed, #2193b0); /* Fresh blue gradient text */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.nav-link {
+    color: #cbd5e1 !important; /* Soft gray-blue */
+    font-weight: 600;
+    margin: 0 0.5rem;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #fff !important;
+}
+
+/* Underline animation for nav links */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #38bdf8;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+.dropdown-menu {
+    background-color: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    padding: 0.5rem;
+    margin-top: 10px;
+}
+
+.dropdown-item {
+    color: #e2e8f0;
+    border-radius: 6px;
+    padding: 8px 16px;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    transform: translateX(5px);
+}
+
+.dropdown-divider {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+}
+
+.btn-primary {
+    background: linear-gradient(to right, #667eea, #764ba2);
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+    transform: translateY(-1px);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+/* Utilities */
+.text-gradient {
+    background: -webkit-linear-gradient(#667eea, #764ba2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

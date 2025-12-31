@@ -1,0 +1,43 @@
+<%- include('../includes/header') %>
+<%- include('../includes/nav', {isAuthenticated: true}) %>
+
+<main class="container mt-5">
+    <h1><%= title %></h1>
+    <form action="/admin/<%= editing ? 'edit-book' : 'add-book' %>" method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" value="<%= editing ? book.title : '' %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Image URL</label>
+            <input type="text" class="form-control" id="image" name="image" value="<%= editing ? book.image : '' %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" id="price" name="price" step="0.01" value="<%= editing ? book.price : '' %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Author</label>
+            <input type="text" class="form-control" id="author" name="author" value="<%= editing ? book.author : '' %>">
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <input type="text" class="form-control" id="category" name="category" value="<%= editing ? book.category : '' %>">
+        </div>
+        <div class="mb-3">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="number" class="form-control" id="stock" name="stock" value="<%= editing ? book.stock : 0 %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="5" required><%= editing ? book.description : '' %></textarea>
+        </div>
+        
+        <% if (editing) { %>
+            <input type="hidden" name="id" value="<%= book._id %>">
+        <% } %>
+
+        <button type="submit" class="btn btn-primary"><%= editing ? 'Update Book' : 'Add Book' %></button>
+    </form>
+</main>
+

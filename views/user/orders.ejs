@@ -1,0 +1,51 @@
+<%- include('../includes/header') %>
+<%- include('../includes/nav', {isAuthenticated: true}) %>
+
+<main class="container mt-5">
+    <h1><%= title %></h1>
+    
+    <% if (orders.length > 0) { %>
+        <% orders.forEach(order => { %>
+            <div class="card mb-3">
+                <div class="card-header d-flex justify-content-between">
+                    <span><strong>Order ID:</strong> <%= order._id %></span>
+                    <span class="badge bg-<%= order.status === 'completed' ? 'success' : (order.status === 'cancelled' ? 'danger' : 'warning') %>">
+                        <%= order.status.toUpperCase() %>
+                    </span>
+                </div>
+                <div class="card-body">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th>Book</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% order.items.forEach(item => { %>
+                                <tr>
+                                    <td><%= item.bookId ? item.bookId.title : 'Book Deleted' %></td>
+                                    <td><%= item.quantity %></td>
+                                    <td>$<%= item.price %></td>
+                                    <td>$<%= item.quantity * item.price %></td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                        <tfoot>
+                            <tr class="border-top">
+                                <td colspan="3" class="text-end"><strong>Total Order Price:</strong></td>
+                                <td><strong>$<%= order.totalPrice %></strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        <% }) %>
+    <% } else { %>
+        <div class="alert alert-info">You have no orders yet.</div>
+    <% } %>
+</main>
+
+<%- include('../includes/footer') %>

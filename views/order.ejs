@@ -1,0 +1,65 @@
+<%- include('./includes/header') %>
+<%- include('./includes/nav.ejs') %>
+
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container py-5">
+        <div class="card mx-auto" style="max-width: 900px; border-radius: 15px;">
+            <div class="row g-0">
+                <!-- Image Preview -->
+                <div class="col-md-6 d-flex align-items-center justify-content-center p-3">
+                    <div class="preview-pic tab-content w-100 text-center">
+                        <div class="tab-pane active" id="pic-1">
+                            <img src="<%= image %>" 
+                                alt="Book Image" 
+                                style="width: 300px; height: 300px; object-fit: cover; border-radius: 10px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Details -->
+                <div class="col-md-6">
+                    <div class="card-body p-4">
+                        <h3 class="product-title text-center mb-4"><%= title %></h3>
+
+                        <!-- Rating -->
+                        <div class="rating d-flex align-items-center mb-3">
+                            <div class="stars me-2">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                            <span class="review-no">41 reviews</span>
+                        </div>
+
+                        <!-- Description & Price -->
+                        <p class="product-description mb-2"><%= description %></p>
+                        <p class="fw-bold">Price: Rs. <%= price %></p>
+
+                        <!-- Vote Info -->
+                        <p class="vote mb-4"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+
+                        <!-- Esewa Form Submit Button -->
+                        <form action="https://rc-epay.esewa.com.np/api/epay/main/v2/form" method="POST" class="text-center">
+                          <input type="hidden" id="amount" name="amount" value="<%= price %>" required>
+                          <input type="hidden" id="tax_amount" name="tax_amount" value="0" required>
+                          <input type="hidden" id="total_amount" name="total_amount" value="<%= price %>" required>
+                          <input type="hidden" id="transaction_uuid" name="transaction_uuid" value="<%= uid %>" required>
+                          <input type="hidden" id="product_code" name="product_code" value="EPAYTEST" required>
+                          <input type="hidden" id="product_service_charge" name="product_service_charge" value="0" required>
+                          <input type="hidden" id="product_delivery_charge" name="product_delivery_charge" value="0" required>
+                          <input type="hidden" id="success_url" name="success_url" value="<%= success_url %>" required>
+                          <input type="hidden" id="failure_url" name="failure_url" value="<%= failure_url %>" required>
+                          <input type="hidden" id="signed_field_names" name="signed_field_names" value="total_amount,transaction_uuid,product_code" required>
+                          <input type="hidden" id="signature" name="signature" value="<%= signature %>" required>
+
+                          <input type="submit" value="Submit" class="btn btn-primary btn-lg px-5" style="border-radius: 10px;">
+                        </form>
+
+                    </div>
+                </div>
+            </div> <!-- row -->
+        </div> <!-- card -->
+    </div> <!-- container -->
+</section>
