@@ -124,13 +124,14 @@ class CartController {
 
             const uid = uuidv4();
             const message = `total_amount=${totalPrice},transaction_uuid=${uid},product_code=EPAYTEST`;
+            console.log("Esewa checkout message:", message);
             const hash = CryptoJS.HmacSHA256(message, process.env.ESEWASECRET);
             const hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
 
             const success_url = `${req.protocol}://${req.get('host')}/cart/verify-esewa`;
             const failure_url = `${req.protocol}://${req.get('host')}/cart`;
 
-            // Use the first book's image as placeholder, or a generic one
+            // Use the last book's image as placeholder, or a generic one
             const displayImage = validItems[validItems.length - 1].bookId.image;
             const displayTitle = `Cart Checkout (${totalQuantity} items)`;
             const displayDescription = `Order for ${totalQuantity} items. Total: Rs.${totalPrice}`;

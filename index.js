@@ -30,13 +30,13 @@ app.set('trust proxy', 1)
 
 
 let store = new MongoDBStore({
-    uri: 'mongodb://127.0.0.1:27017/esewa',
+    uri: process.env.DBURL,
     databaseName: 'esewa',
     collection: 'sessions',
     expiresAfterSeconds: 60 * 60 * 24 * 14
 },
     function (error) {
-        console.log("session connection errror", error)
+        console.log("session", error)
     });
 
 store.on('error', function (error) {

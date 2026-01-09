@@ -1,13 +1,15 @@
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
+import dotenv from "dotenv";
+dotenv.config();
 
 const seedAdmin = async () => {
     try {
-        const adminEmail = "admin@admin.com";
+        const adminEmail = process.env.ADMIN_EMAIL;
         const adminExists = await User.findOne({ email: adminEmail });
 
         if (!adminExists) {
-            const hashedPassword = await bcrypt.hash("admin123", 10);
+            const hashedPassword = await bcrypt.hash(process.env.APASS, 10);
             await User.create({
                 username: "admin",
                 email: adminEmail,
@@ -16,7 +18,7 @@ const seedAdmin = async () => {
             });
             console.log("Admin user created successfully");
         } else {
-            // console.log("Admin user already exists");
+            console.log("Admin user already exists");
         }
     } catch (error) {
         console.error("Error seeding admin user:", error);
